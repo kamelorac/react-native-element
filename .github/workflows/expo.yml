@@ -1,0 +1,26 @@
+name: (manual) Expo default Channel
+
+on: workflow_dispatch
+
+jobs:
+  publish:
+    continue-on-error: true
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        uses: ./.github/actions/install
+
+      - name: 🏗 Setup Expo
+        uses: expo/expo-github-action@v7
+        with:
+          expo-version: latest
+          token: ${{ secrets.EXPO_TOKEN }}
+
+      - name: 🚀 Publish preview
+        run: |
+          cd example
+          expo publish --non-interactive

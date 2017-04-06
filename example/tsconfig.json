@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig",
+  "references": [
+    {
+      "path": "../packages/base"
+    },
+    {
+      "path": "../packages/themed"
+    }
+  ],
+  "compilerOptions": {
+    // Avoid expo-cli auto-generating a tsconfig
+  },
+  "exclude": ["node_modules", "*.config.js", "website", "index.js"]
+}
